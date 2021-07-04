@@ -29,7 +29,7 @@ public class GetRestAPISteps {
 		RestAssured.baseURI = "https://reqres.in/";
 		request = RestAssured.given();
 		request.header("Content-Type", "application/json");
-		request.pathParam("userId", "3");
+		request.pathParam("userId", "3"); // {userId} value serves from here i.e 3
 	}
 
 	@When("I call Rest assured Get method with Get URL")
@@ -65,7 +65,7 @@ public class GetRestAPISteps {
 		// responseBody is a string now, we need to convert this in json to iterate this
 		JsonPath json = new JsonPath(responseBody);
 		String first_name = json.get("data.first_name");
-		Assert.assertEquals(first_name, "Janet");
+		Assert.assertEquals(first_name, "Emma");
 	}
 
 }

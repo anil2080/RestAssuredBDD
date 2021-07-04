@@ -1,5 +1,7 @@
 package steps;
 
+import java.io.File;
+
 import org.json.JSONObject;
 import org.testng.asserts.Assertion;
 
@@ -29,10 +31,15 @@ public class PostRestAPISteps {
 
 	@When("I call Rest assured post method with request payload to create user")
 	public void i_call_rest_assured_post_method_with_reques_payload_to_create_user() {
-		JSONObject requestParams = new JSONObject();
-		requestParams.put("name", "morpheus");
-		requestParams.put("job", "leader");
-		request.body(requestParams.toString());
+		// Way 1 - use JSONObject for Request Payload
+//		JSONObject requestParams = new JSONObject();
+//		requestParams.put("name", "morpheus");
+//		requestParams.put("job", "leader");
+		
+		// Way 2 - Create a json file, add req payload to it and pass in request.body(file)
+		
+		File requestParams = new File(System.getProperty("user.dir") + "\\src\\test\\java\\payloads\\postUser.json");
+		request.body(requestParams);
 		response = request.post("api/users");
 	}
 

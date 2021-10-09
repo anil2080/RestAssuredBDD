@@ -19,6 +19,9 @@ phases:
   post_build:
     commands:
       - echo Build completed on `date`
-artifacts:
-  files:
-    - target
+  reports:
+    arn:aws:codebuild:us-east-1:939130155633:report-group/Cucumber-HTML-Reports:
+    files:
+      - '**/*'
+    base-directory: 'target/cucumber-reports/advanced-reports/cucumber-html-reports/'
+

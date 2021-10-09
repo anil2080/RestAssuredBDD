@@ -22,3 +22,6 @@ phases:
 artifacts:
   files:
     - target
+reports:
+  files:
+    - target\cucumber-reports\advanced-reports\cucumber-html-reports\overview-features.html
